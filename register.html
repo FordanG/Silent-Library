@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Silent Library | Login</title>
+    <title>Silent Library | Register</title>
     <link href="./css/style.css" rel="stylesheet" />
     <link rel="icon" type="image/x-icon" href="/img/favicon.png" />
   </head>
@@ -62,7 +62,7 @@
     <section class="bg-tertiary pb-10 pt-24">
       <div class="container flex flex-col mx-auto items-center">
         <h1 class="text-5xl font-bold text-secondary uppercase tracking-wide">
-          Silent Library Login 
+          Silent Library Registration 
         </h1>
       </div>
     </section>
@@ -71,8 +71,38 @@
       <div class="mt-16 container grid grid-cols-12 mx-auto">
         <div class="col-span-4 col-start-5">
           <h2 class="text-secondary text-lg font-bold">Ready to read some books today?</h2>
-          <h3 class="italic text-lg">Login to access books from our library</h3>
+          <h3 class="italic text-lg">Register now and get your own digital library!</h3>
           <form class="mt-10 w-full max-w-lg">
+              <div class="flex flex-wrap -mx-3 mb-6">
+              <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <label
+                  class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                  for="grid-first-name"
+                >
+                  First Name
+                </label>
+                <input
+                  class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                  id="grid-first-name"
+                  type="text"
+                  placeholder="Jane"
+                />
+              </div>
+              <div class="w-full md:w-1/2 px-3">
+                <label
+                  class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                  for="grid-last-name"
+                >
+                  Last Name
+                </label>
+                <input
+                  class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                  id="grid-last-name"
+                  type="text"
+                  placeholder="Doe"
+                />
+              </div>
+            </div>
             <div class="flex flex-wrap -mx-3 mb-6">
               <div class="w-full px-3">
                 <label
@@ -112,13 +142,13 @@
                   class="drop-shadow-md bg-primary py-2 rounded-sm text-white font-bold uppercase px-8 w-64 transform hover:scale-102 transition duration-200 ease-in-out hover:brightness-110"
                   type="button"
                 >
-                  Login
+                  Register
                 </button>
               </div>
               <div class="md:w-2/3"></div>
             </div>
           </form>
-          <a href="register.html" class="text-gray-400 mt-10 block">Don't have an account yet?</a>
+          <a href="register.html" class="text-gray-400 mt-10 block">Have an account already?</a>
         </div>
       </div>
     </section>
