@@ -1,5 +1,7 @@
 let users = JSON.parse(localStorage.getItem("users"));
 
+// console.log(users);
+
 // $(function () {
 //   users = JSON.parse(users); // Convert String as an Object
 //   if (users === null)
@@ -39,6 +41,8 @@ const registerUser = () => {
               text: "Registration successful!",
               icon: "success",
               confirmButtonText: "Continue",
+            }).then(function () {
+              window.location = "./login.html";
             });
             return true;
           }
