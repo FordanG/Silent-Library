@@ -31,8 +31,7 @@ seeBooks.addEventListener("click", () => {
 const searchBooks = () => {
   let keyword = document.searchForm.searchField.value;
   const searchResult = search(data, keyword);
-  console.log(!searchResult.length === 0);
-  if (!searchResult.length === 0) {
+  if (!(searchResult.length === 0)) {
     searchResultTitle.innerHTML = `<h2 class="text-secondary font-bold tracking-wide text-2xl uppercase">
             ${searchResult.length} results for "${keyword}"
           </h2>`;
@@ -42,7 +41,7 @@ const searchBooks = () => {
   } else {
     bookList.innerHTML = "";
     searchResultTitle.innerHTML = `<h2 class="text-secondary font-bold tracking-wide text-2xl uppercase">
-            No Results Found. Please try to search for a new book.
+            No Results Found for "${keyword}". Please try to search for a new book.
           </h2>`;
     seeBooks.classList.remove("invisible");
   }
@@ -105,7 +104,7 @@ if (authBook)
       if (result.isConfirmed) {
         const users = JSON.parse(localStorage.getItem("users"));
         const userIndex = users.findIndex(
-          (user) => (user.email = currentUser.email)
+          (user) => user.email === currentUser.email
         );
         users[userIndex].borrowedBooks.push(book);
         currentUser.borrowedBooks.push(book);
