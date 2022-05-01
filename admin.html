@@ -82,6 +82,13 @@
             <li class="inline">
               <a
                 class="text-lg text-gray-700 uppercase font-semibold hover:text-secondary"
+                href="#booksBorrowed"
+                >Books Borrowed</a
+              >
+            </li>
+            <li class="inline">
+              <a
+                class="text-lg text-gray-700 uppercase font-semibold hover:text-secondary"
                 href="#borrowers"
                 >Borrowers</a
               >
@@ -105,8 +112,62 @@
       </div>
     </section>
 
-    <section class="mt-10">
-      <div class="container mx-auto space-y-4 flex justify-center">
+    <section class="mt-10" id="booksBorrowed">
+      <div class="container mx-auto space-y-4 flex flex-col items-center">
+        <div>
+          <h2 class="text-secondary font-bold tracking-wide text-2xl uppercase">
+            Books Borrowed
+          </h2>
+        </div>
+
+        <table class="table p-4">
+          <thead>
+            <tr>
+              <th
+                class="border-b-2 p-4 dark:border-dark-5 whitespace-nowrap text-gray-900 font-bold"
+                title="Field #1"
+              >
+                #
+              </th>
+              <th
+                class="border-b-2 p-4 dark:border-dark-5 whitespace-nowrap text-gray-900 font-bold w-96 text-left"
+                title="Field #2"
+              >
+                Book Title
+              </th>
+
+              <th
+                class="border-b-2 p-4 dark:border-dark-5 whitespace-nowrap text-gray-900 font-bold"
+                title="Field #4"
+              >
+                Book Author
+              </th>
+              <!-- <th
+                class="border-b-2 p-4 dark:border-dark-5 whitespace-nowrap text-gray-900 font-bold"
+                title="Field #5"
+              >
+                Return
+              </th>
+              <th
+                class="border-b-2 p-4 dark:border-dark-5 whitespace-nowrap text-gray-900 font-bold"
+                title="Field #6"
+              >
+                Change Book
+              </th> -->
+            </tr>
+          </thead>
+          <tbody class="booksBorrowedList"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="mt-10" id="borrowers">
+      <div class="container mx-auto space-y-4 flex flex-col items-center">
+        <div>
+          <h2 class="text-secondary font-bold tracking-wide text-2xl uppercase">
+            Borrowers List
+          </h2>
+        </div>
         <table class="table p-4">
           <thead>
             <tr>
@@ -178,7 +239,7 @@
         <p>All Rights Reserved | Silent Library 2022</p>
       </div>
     </footer>
-    <script src="./assets/js/borrowers.js"></script>
+    <script src="./assets/js/admin.js"></script>
     <script src="./assets/js/auth.js"></script>
   </body>
 </html>

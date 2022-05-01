@@ -5,7 +5,7 @@
     "last_name": "Grandison",
     "email": "kgrandison0@discovery.com",
     "password": "XUMGDAIoH92Q",
-    "borrowedBooks": [{ "title": "hello" }, { "title": "hello2" }]
+    "borrowedBooks": []
   },
   {
     "id": 2,

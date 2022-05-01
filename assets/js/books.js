@@ -1,6 +1,52 @@
 const authBook = JSON.parse(localStorage.getItem("isLoggedIn"));
 const bookList = document.querySelector("#bookList");
 const data = JSON.parse(localStorage.getItem("books"));
+const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+const searchForm = document.forms.namedItem("searchForm");
+const searchResultTitle = document.querySelector("#searchResultTitle");
+const seeBooks = document.querySelector("#seeBooks");
+
+const search = (array, keyword) =>
+  data.filter((book) =>
+    book.title.toLowerCase().includes(keyword.toLowerCase())
+  );
+
+if (searchForm)
+  searchForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    searchBooks();
+  });
+
+seeBooks.addEventListener("click", () => {
+  searchResultTitle.innerHTML = `<h2 class="text-secondary font-bold tracking-wide text-2xl uppercase">
+            Pick a book
+          </h2>
+          <p class="text-gray-500 italic text-md">
+            Dive in the minds of these finest authors
+          </p>`;
+  seeBooks.classList.add("invisible");
+  generateBooks(data);
+});
+
+const searchBooks = () => {
+  let keyword = document.searchForm.searchField.value;
+  const searchResult = search(data, keyword);
+  console.log(!searchResult.length === 0);
+  if (!searchResult.length === 0) {
+    searchResultTitle.innerHTML = `<h2 class="text-secondary font-bold tracking-wide text-2xl uppercase">
+            ${searchResult.length} results for "${keyword}"
+          </h2>`;
+    bookList.innerHTML = "";
+    seeBooks.classList.remove("invisible");
+    generateBooks(searchResult);
+  } else {
+    bookList.innerHTML = "";
+    searchResultTitle.innerHTML = `<h2 class="text-secondary font-bold tracking-wide text-2xl uppercase">
+            No Results Found. Please try to search for a new book.
+          </h2>`;
+    seeBooks.classList.remove("invisible");
+  }
+};
 
 function generateBooks(data) {
   data.forEach((book) => {
@@ -25,28 +71,46 @@ function generateBooks(data) {
             <h4 class="text-lg -mt-2 text-center">${book.authors[0]}</h4>
             `
       );
-
       bookList.appendChild(bookContainer);
     }
   });
   document.querySelectorAll(".book").forEach((book) => {
     book.addEventListener("click", (e) => {
-      swal(e.path[1].innerText);
+      const bookISBN = e.path[1].id;
+      // get book from list
+      const bookFound = data.find((book) => {
+        return book.isbn == bookISBN;
+      });
+      swal(bookFound);
     });
   });
 }
 
 if (authBook)
-  function swal(title) {
+  function swal(book) {
     Swal.fire({
-      title: `Do you want to borrow ${title}`,
+      customClass: {
+        title: "text-primary text-2xl",
+      },
+      title: `Do you want to borrow this book?`,
+      imageUrl: `${book.thumbnailUrl}`,
+      imageHeight: 240,
+      imageAlt: `${book.title}`,
+      html: `<b>${book.title}</b> by <em>${book.authors[0]}</em>`,
       showCancelButton: true,
       confirmButtonColor: "#4188E4",
-      cancelButtonColor: "#d33",
+      cancelButtonColor: "#F9537F",
       confirmButtonText: "Borrow book",
     }).then((result) => {
       if (result.isConfirmed) {
-        console.log(title);
+        const users = JSON.parse(localStorage.getItem("users"));
+        const userIndex = users.findIndex(
+          (user) => (user.email = currentUser.email)
+        );
+        users[userIndex].borrowedBooks.push(book);
+        currentUser.borrowedBooks.push(book);
+        localStorage.setItem("currentUser", JSON.stringify(currentUser));
+        localStorage.setItem("users", JSON.stringify(users));
         Swal.fire("Book borrowed!", "Have fun reading!", "success");
       }
     });
