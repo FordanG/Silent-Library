@@ -1,20 +1,11 @@
-console.log("form validation start");
-let users = localStorage.getItem("users");
-$(function () {
-  users = JSON.parse(users); // Convert String as an Object
-  if (users === null)
-    // If there is nothing intialize
-    users = [
-      {
-        first_name: "Gabriel John",
-        last_name: "Fordan",
-        email: "gabrieljohnfordan@gmail.com",
-        password: "Wasdzc123*",
-      },
-    ];
-  localStorage.setItem("users", JSON.stringify(users));
-  localStorage.setItem("isLoggedIn", false);
-});
+let users = JSON.parse(localStorage.getItem("users"));
+
+// $(function () {
+//   users = JSON.parse(users); // Convert String as an Object
+//   if (users === null)
+//     // If there is nothing intialize
+//     localStorage.setItem("users", JSON.stringify(users));
+// });
 
 // nodes selection
 const registrationForm = document.forms.namedItem("registration");
@@ -33,10 +24,12 @@ const registerUser = () => {
         if (!checkUser(email))
           if (isValidPassword(password, 6)) {
             let user = {
+              id: users.length + 1,
               first_name: $("#firstName").val(),
               last_name: $("#lastName").val(),
               email: $("#email").val(),
               password: $("#password").val(),
+              borrowedBooks: [],
             };
 
             users.push(user);
@@ -193,9 +186,7 @@ const checkUser = (email) => {
   const userFound = users.find((user) => {
     return user.email == email.value;
   });
-  console.log(email.value);
-  console.log(users);
-  console.log(userFound);
+
   if (userFound && registrationForm) {
     Swal.fire({
       title: "User Found",
