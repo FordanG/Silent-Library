@@ -578,6 +578,16 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-right: -0.75rem;
 }
 
+.my-4 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.my-8 {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
 .ml-32 {
   margin-left: 8rem;
 }
@@ -776,6 +786,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   gap: 0.5rem;
 }
 
+.gap-12 {
+  gap: 3rem;
+}
+
 .gap-20 {
   gap: 5rem;
 }
@@ -852,6 +866,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .bg-tertiary {
   --tw-bg-opacity: 1;
   background-color: rgb(222 242 255 / var(--tw-bg-opacity));
+}
+
+.bg-purple-50 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(250 245 255 / var(--tw-bg-opacity));
 }
 
 .bg-gray-200 {

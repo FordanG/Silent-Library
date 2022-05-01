@@ -11,6 +11,12 @@
       type="image/x-icon"
       href="./assets/img/favicon.png?"
     />
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script
+      type="text/javascript"
+      src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"
+    ></script>
+    <script src="./assets/js/init.js"></script>
   </head>
   <body class="">
     <nav class="bg-primary p-5 flex justify-center sticky top-0 z-50">
@@ -21,7 +27,7 @@
           /></a>
         </div>
         <div>
-          <ul class="space-x-4">
+          <ul class="space-x-4 navLinks">
             <li class="inline">
               <a
                 class="text-lg text-white uppercase font-semibold hover:text-secondary"
@@ -61,7 +67,7 @@
               <button
                 class="px-5 py-2 bg-secondary rounded-sm text-white font-semibold transform hover:scale-102 transition duration-200 ease-in-out hover:brightness-110"
               >
-                <a class="" href="./login.html">Login/Register</a>
+                <a id="cta" href="./login.html">Login/Register</a>
               </button>
             </li>
           </ul>
@@ -96,15 +102,18 @@
       <div class="container mx-auto flex flex-col">
         <div class="flex flex-col items-center justify-center">
           <h2 class="text-secondary font-bold tracking-wide text-2xl uppercase">
-            Fiction Books
+            Pick a book
           </h2>
           <p class="text-gray-500 italic text-md">
             Dive in the minds of these finest authors
           </p>
         </div>
-        <div class="grid grid-cols-6 justify-between mt-10">
+        <div
+          class="grid grid-cols-6 justify-between mt-10 gap-12"
+          id="bookList"
+        >
           <!-- Books -->
-          <a
+          <!-- <a
             href="./bookpage.html"
             class="flex flex-col items-center justify-center transform hover:scale-102 transition duration-200 ease-in-out hover:brightness-110"
           >
@@ -115,8 +124,8 @@
             />
             <h3 class="font-bold text-lg">Book Title</h3>
             <h4 class="text-lg -mt-2">Author Name</h4>
-          </a>
-          <a
+          </a> -->
+          <!-- <a
             href="./bookpage.html"
             class="flex flex-col items-center justify-center transform hover:scale-102 transition duration-200 ease-in-out hover:brightness-110"
           >
@@ -175,11 +184,11 @@
             />
             <h3 class="font-bold text-lg">Book Title</h3>
             <h4 class="text-lg -mt-2">Author Name</h4>
-          </a>
+          </a> -->
         </div>
 
         <!-- Button  -->
-        <div class="mt-10 text-center">
+        <!-- <div class="mt-10 text-center">
           <button
             class="bg-primary rounded-sm px-8 py-2 transform hover:scale-102 transition duration-200 ease-in-out hover:brightness-110"
           >
@@ -187,11 +196,11 @@
               >See All Fiction Books</a
             >
           </button>
-        </div>
+        </div> -->
       </div>
     </section>
 
-    <section class="py-16">
+    <!-- <section class="py-16">
       <div class="container mx-auto flex flex-col">
         <div class="flex flex-col items-center justify-center">
           <h2 class="text-secondary font-bold tracking-wide text-2xl uppercase">
@@ -202,7 +211,6 @@
           </p>
         </div>
         <div class="grid grid-cols-6 justify-between mt-10">
-          <!-- Books -->
           <a
             href="./bookpage.html"
             class="flex flex-col items-center justify-center transform hover:scale-102 transition duration-200 ease-in-out hover:brightness-110"
@@ -277,7 +285,6 @@
           </a>
         </div>
 
-        <!-- Button  -->
         <div class="mt-10 text-center">
           <button
             class="bg-primary rounded-sm px-8 py-2 transform hover:scale-102 transition duration-200 ease-in-out hover:brightness-110"
@@ -288,7 +295,7 @@
           </button>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <footer class="mt-20 bg-primary w-full">
       <div
@@ -332,5 +339,7 @@
         <p>All Rights Reserved | Silent Library 2022</p>
       </div>
     </footer>
+    <script src="./assets/js/books.js"></script>
+    <script src="./assets/js/auth.js"></script>
   </body>
 </html>

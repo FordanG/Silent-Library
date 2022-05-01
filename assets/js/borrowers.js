@@ -1,16 +1,5 @@
 const borrowersList = document.querySelector(".borrowersList");
-async function fetchApi(url) {
-  const dataFetch = await fetch(url, {
-    method: "GET",
-    headers: {
-      Accept: "application/json",
-      mode: "no-cors",
-    },
-  });
-  const data = await dataFetch.json();
-  return data;
-}
-
+const data = JSON.parse(localStorage.getItem("users"));
 function generateBorrowers(data) {
   data.forEach((borrower) => {
     const borrowerRow = document.createElement("tr");
@@ -18,18 +7,15 @@ function generateBorrowers(data) {
     borrowerRow.innerHTML = `
               <td class="border-b-2 p-4 dark:border-dark-5">${borrower.id}</td>
               <td class="border-b-2 p-4 dark:border-dark-5">
-                ${borrower.name}
+                ${borrower.first_name + " " + borrower.last_name} 
               </td>
-              <td class="border-b-2 p-4 dark:border-dark-5">${borrower.dateLastBorrowed}</td>
-              <td class="border-b-2 p-4 dark:border-dark-5">${borrower.borrowedBooks}</td>
+              
+              <td class="border-b-2 p-4 dark:border-dark-5">${
+                borrower.borrowedBooks.length
+              }</td>
             `;
     borrowersList.appendChild(borrowerRow);
   });
 }
 
-async function generateBorrowersList() {
-  const data = await fetchApi("./assets/json/borrowers.json");
-  generateBorrowers(data);
-}
-
-generateBorrowersList();
+generateBorrowers(data);

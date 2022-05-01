@@ -13,7 +13,7 @@ $(function () {
       },
     ];
   localStorage.setItem("users", JSON.stringify(users));
-  localStorage.setItem("isLoggedin", false);
+  localStorage.setItem("isLoggedIn", false);
 });
 
 // nodes selection
@@ -68,9 +68,9 @@ const loginUser = () => {
           icon: "success",
           confirmButtonText: "Continue",
         }).then(function () {
-          window.location = "./index.html";
+          window.location = "./books.html";
         });
-        localStorage.setItem("isLoggedin", true);
+        localStorage.setItem("isLoggedIn", true);
         localStorage.setItem("currentUser", JSON.stringify(user));
       } else {
         Swal.fire({

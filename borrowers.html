@@ -11,6 +11,8 @@
       type="image/x-icon"
       href="./assets/img/favicon.png?"
     />
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./assets/js/init.js"></script>
   </head>
   <body>
     <nav class="bg-primary p-5 flex justify-center sticky top-0 z-50">
@@ -21,7 +23,7 @@
           /></a>
         </div>
         <div>
-          <ul class="space-x-4">
+          <ul class="space-x-4 navLinks">
             <li class="inline">
               <a
                 class="text-lg text-white uppercase font-semibold hover:text-secondary"
@@ -61,7 +63,7 @@
               <button
                 class="px-5 py-2 bg-secondary rounded-sm text-white font-semibold transform hover:scale-102 transition duration-200 ease-in-out hover:brightness-110"
               >
-                <a class="" href="./login.html">Login/Register</a>
+                <a id="cta" href="./login.html">Login/Register</a>
               </button>
             </li>
           </ul>
@@ -95,12 +97,7 @@
               >
                 Name of Borrower
               </th>
-              <th
-                class="border-b-2 p-4 dark:border-dark-5 whitespace-nowrap text-gray-900 font-bold w-96 text-left"
-                title="Field #3"
-              >
-                Date last borrowed
-              </th>
+
               <th
                 class="border-b-2 p-4 dark:border-dark-5 whitespace-nowrap text-gray-900 font-bold"
                 title="Field #4"
@@ -157,5 +154,6 @@
       </div>
     </footer>
     <script src="./assets/js/borrowers.js"></script>
+    <script src="./assets/js/auth.js"></script>
   </body>
 </html>

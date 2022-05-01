@@ -16,6 +16,7 @@
       type="text/javascript"
       src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"
     ></script>
+    <script src="./assets/js/init.js"></script>
   </head>
   <body class="">
     <nav class="bg-primary p-5 flex justify-center sticky top-0 z-50">
@@ -26,7 +27,7 @@
           /></a>
         </div>
         <div>
-          <ul class="space-x-4">
+          <ul class="space-x-4 navLinks">
             <li class="inline">
               <a
                 class="text-lg text-white uppercase font-semibold hover:text-secondary"
@@ -66,7 +67,7 @@
               <button
                 class="px-5 py-2 bg-secondary rounded-sm text-white font-semibold transform hover:scale-102 transition duration-200 ease-in-out hover:brightness-110"
               >
-                <a class="" href="./login.html">Login/Register</a>
+                <a id="cta" href="./login.html">Login/Register</a>
               </button>
             </li>
           </ul>
@@ -221,5 +222,6 @@
       </div>
     </footer>
     <script src="./assets/js/formValidation.js"></script>
+    <script src="./assets/js/auth.js"></script>
   </body>
 </html>
