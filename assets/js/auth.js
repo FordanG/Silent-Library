@@ -24,7 +24,8 @@ if (auth) {
 
 function logout() {
   localStorage.removeItem("isLoggedIn");
-  window.location.replace("/");
+  localStorage.removeItem("currentUser");
+  window.location = "./index.html";
 
   Swal.fire({
     title: "Confirmation",
