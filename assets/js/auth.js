@@ -15,11 +15,11 @@ if (auth) {
   admin.innerHTML = `
               <a
                 class="text-lg text-white uppercase font-semibold hover:text-secondary"
-                href="./admin.html"
+                href="./admin.html" id="adminNav"
                 >Admin</a
               >
             `;
-  navLinks.insertBefore(admin, navLinks.children[5]);
+  navLinks.insertBefore(admin, navLinks.children[4]);
 }
 
 function logout() {

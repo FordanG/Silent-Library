@@ -24,7 +24,7 @@ seeBooks.addEventListener("click", () => {
           <p class="text-gray-500 italic text-md">
             Dive in the minds of these finest authors
           </p>`;
-  seeBooks.classList.add("invisible");
+  seeBooks.classList.add("hidden");
   generateBooks(data);
 });
 
@@ -36,15 +36,14 @@ const searchBooks = () => {
             ${searchResult.length} results for "${keyword}"
           </h2>`;
     bookList.innerHTML = "";
-    seeBooks.classList.remove("invisible");
     generateBooks(searchResult);
   } else {
     bookList.innerHTML = "";
     searchResultTitle.innerHTML = `<h2 class="text-secondary font-bold tracking-wide text-2xl uppercase">
             No Results Found for "${keyword}". Please try to search for a new book.
           </h2>`;
-    seeBooks.classList.remove("invisible");
   }
+  seeBooks.classList.remove("hidden");
 };
 
 function generateBooks(data) {
@@ -102,15 +101,27 @@ if (authBook)
       confirmButtonText: "Borrow book",
     }).then((result) => {
       if (result.isConfirmed) {
-        const users = JSON.parse(localStorage.getItem("users"));
-        const userIndex = users.findIndex(
-          (user) => user.email === currentUser.email
-        );
-        users[userIndex].borrowedBooks.push(book);
-        currentUser.borrowedBooks.push(book);
-        localStorage.setItem("currentUser", JSON.stringify(currentUser));
-        localStorage.setItem("users", JSON.stringify(users));
-        Swal.fire("Book borrowed!", "Have fun reading!", "success");
+        const bookFound = currentUser.borrowedBooks.find((booklist) => {
+          return booklist.isbn == book.isbn;
+        });
+        if (!bookFound) {
+          const users = JSON.parse(localStorage.getItem("users"));
+          const userIndex = users.findIndex(
+            (user) => user.email === currentUser.email
+          );
+          users[userIndex].borrowedBooks.push(book);
+          currentUser.borrowedBooks.push(book);
+          localStorage.setItem("currentUser", JSON.stringify(currentUser));
+          localStorage.setItem("users", JSON.stringify(users));
+          Swal.fire("Book borrowed!", "Have fun reading!", "success");
+        } else {
+          Swal.fire({
+            title: "Book borrowed already",
+            text: "You are still borrowing this book",
+            icon: "error",
+            confirmButtonText: "Continue",
+          });
+        }
       }
     });
   }

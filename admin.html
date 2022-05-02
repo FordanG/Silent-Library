@@ -38,13 +38,7 @@
                 >Books</a
               >
             </li>
-            <li class="inline">
-              <a
-                class="text-lg text-white uppercase font-semibold hover:text-secondary"
-                href="./borrowers.html"
-                >Borrowers</a
-              >
-            </li>
+
             <li class="inline">
               <a
                 class="text-lg text-white uppercase font-semibold hover:text-secondary"
@@ -74,75 +68,96 @@
     <!-- Page Navigation Title -->
     <section class="bg-tertiary pb-10 pt-24">
       <div class="container flex flex-col mx-auto items-center">
-        <h1 class="text-5xl font-bold text-secondary uppercase tracking-wide">
-          Admin
+        <h1
+          class="text-5xl font-bold text-secondary uppercase tracking-wide"
+          id="adminTitle"
+        >
+          Admin Page
         </h1>
+        <h2 id="adminSubtitle" class="text-2xl font-bold text-gray-900 mt-10">
+          Hello There
+        </h2>
         <div>
-          <ul class="space-x-4 navLinks">
+          <ul class="space-x-4 navLinks mt-10">
             <li class="inline">
-              <a
-                class="text-lg text-gray-700 uppercase font-semibold hover:text-secondary"
-                href="#booksBorrowed"
-                >Books Borrowed</a
+              <button
+                class="px-5 py-2 border-secondary border-2 rounded-md text-gray-700 font-bold hover:text-secondary transition duration-200 ease-in-out"
+                id="booksBorrowedButton"
               >
+                Books Borrowed
+              </button>
             </li>
             <li class="inline">
-              <a
-                class="text-lg text-gray-700 uppercase font-semibold hover:text-secondary"
-                href="#borrowers"
-                >Borrowers</a
+              <button
+                class="px-5 py-2 rounded-md text-gray-700 font-bold hover:text-secondary transition duration-200 ease-in-out"
+                id="borrowersButton"
               >
+                Borrowers List
+              </button>
             </li>
             <li class="inline">
-              <a
-                class="text-lg text-gray-700 uppercase font-semibold hover:text-secondary"
-                href="#members"
-                >Members</a
+              <button
+                class="px-5 py-2 rounded-md text-gray-700 font-bold hover:text-secondary transition duration-200 ease-in-out"
+                id="membersButton"
               >
+                Members List
+              </button>
             </li>
-            <li class="inline">
-              <a
-                class="text-lg text-gray-700 uppercase font-semibold hover:text-secondary"
-                href="#books"
-                >Books</a
+            <!-- <li class="inline">
+              <button
+                class="px-5 py-2 rounded-md text-gray-700 font-bold hover:text-secondary transition duration-200 ease-in-out"
+                id="booksButton"
               >
+                Books
+              </button>
+            </li> -->
+            <li class="inline">
+              <button
+                class="px-5 py-2 rounded-md text-gray-700 font-bold hover:text-secondary transition duration-200 ease-in-out"
+                id="inquiriesButton"
+              >
+                Inquiries
+              </button>
             </li>
           </ul>
         </div>
       </div>
     </section>
 
-    <section class="mt-10" id="booksBorrowed">
-      <div class="container mx-auto space-y-4 flex flex-col items-center">
-        <div>
-          <h2 class="text-secondary font-bold tracking-wide text-2xl uppercase">
-            Books Borrowed
-          </h2>
-        </div>
+    <main id="adminMain">
+      <section class="mt-10" id="booksBorrowed">
+        <div class="container mx-auto space-y-4 flex flex-col items-center">
+          <div>
+            <h2
+              class="text-secondary font-bold tracking-wide text-2xl uppercase"
+            >
+              Books Borrowed
+            </h2>
+          </div>
 
-        <table class="table p-4">
-          <thead>
-            <tr>
-              <th
-                class="border-b-2 p-4 dark:border-dark-5 whitespace-nowrap text-gray-900 font-bold"
-                title="Field #1"
-              >
-                #
-              </th>
-              <th
-                class="border-b-2 p-4 dark:border-dark-5 whitespace-nowrap text-gray-900 font-bold w-96 text-left"
-                title="Field #2"
-              >
-                Book Title
-              </th>
+          <table class="table p-4">
+            <thead>
+              <tr>
+                <th
+                  class="border-b-2 p-4 dark:border-dark-5 whitespace-nowrap text-gray-900 font-bold"
+                  title="Field #1"
+                >
+                  #
+                </th>
+                <th
+                  class="border-b-2 p-4 dark:border-dark-5 whitespace-nowrap text-gray-900 font-bold w-96 text-left"
+                  title="Field #2"
+                >
+                  Book Title
+                </th>
 
-              <th
-                class="border-b-2 p-4 dark:border-dark-5 whitespace-nowrap text-gray-900 font-bold"
-                title="Field #4"
-              >
-                Book Author
-              </th>
-              <!-- <th
+                <th
+                  class="border-b-2 p-4 dark:border-dark-5 whitespace-nowrap text-gray-900 font-bold"
+                  title="Field #4"
+                >
+                  Book Author
+                </th>
+                <!-- <th
                 class="border-b-2 p-4 dark:border-dark-5 whitespace-nowrap text-gray-900 font-bold"
                 title="Field #5"
               >
@@ -154,49 +169,193 @@
               >
                 Change Book
               </th> -->
-            </tr>
-          </thead>
-          <tbody class="booksBorrowedList"></tbody>
-        </table>
-      </div>
-    </section>
-
-    <section class="mt-10" id="borrowers">
-      <div class="container mx-auto space-y-4 flex flex-col items-center">
-        <div>
-          <h2 class="text-secondary font-bold tracking-wide text-2xl uppercase">
-            Borrowers List
-          </h2>
+              </tr>
+            </thead>
+            <tbody id="booksBorrowedList"></tbody>
+          </table>
         </div>
-        <table class="table p-4">
-          <thead>
-            <tr>
+      </section>
+
+      <section class="mt-10 hidden" id="borrowers">
+        <div class="container mx-auto space-y-4 flex flex-col items-center">
+          <div>
+            <h2
+              class="text-secondary font-bold tracking-wide text-2xl uppercase"
+            >
+              Borrowers List
+            </h2>
+          </div>
+          <table class="table p-4">
+            <thead>
+              <tr>
+                <th
+                  class="border-b-2 p-4 dark:border-dark-5 whitespace-nowrap text-gray-900 font-bold"
+                  title="Field #1"
+                >
+                  #
+                </th>
+                <th
+                  class="border-b-2 p-4 dark:border-dark-5 whitespace-nowrap text-gray-900 font-bold w-96 text-left"
+                  title="Field #2"
+                >
+                  Name of Borrower
+                </th>
+
+                <th
+                  class="border-b-2 p-4 dark:border-dark-5 whitespace-nowrap text-gray-900 font-bold"
+                  title="Field #4"
+                >
+                  Number of books borrowed
+                </th>
+              </tr>
+            </thead>
+            <tbody id="borrowersList"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="mt-10 hidden" id="members">
+        <div class="container mx-auto space-y-4 flex flex-col items-center">
+          <div>
+            <h2
+              class="text-secondary font-bold tracking-wide text-2xl uppercase"
+            >
+              Members List
+            </h2>
+          </div>
+
+          <table class="table p-4">
+            <thead>
+              <tr>
+                <th
+                  class="border-b-2 p-4 dark:border-dark-5 whitespace-nowrap text-gray-900 font-bold"
+                  title="Field #1"
+                >
+                  #
+                </th>
+                <th
+                  class="border-b-2 p-4 dark:border-dark-5 whitespace-nowrap text-gray-900 font-bold w-96 text-left"
+                  title="Field #2"
+                >
+                  Name
+                </th>
+
+                <th
+                  class="border-b-2 p-4 dark:border-dark-5 whitespace-nowrap text-gray-900 font-bold"
+                  title="Field #4"
+                >
+                  Email Address
+                </th>
+                <!-- <th
+                class="border-b-2 p-4 dark:border-dark-5 whitespace-nowrap text-gray-900 font-bold"
+                title="Field #5"
+              >
+                Return
+              </th>
               <th
                 class="border-b-2 p-4 dark:border-dark-5 whitespace-nowrap text-gray-900 font-bold"
-                title="Field #1"
+                title="Field #6"
               >
-                #
-              </th>
-              <th
-                class="border-b-2 p-4 dark:border-dark-5 whitespace-nowrap text-gray-900 font-bold w-96 text-left"
-                title="Field #2"
-              >
-                Name of Borrower
-              </th>
+                Change Book
+              </th> -->
+              </tr>
+            </thead>
+            <tbody id="membersList"></tbody>
+          </table>
+        </div>
+      </section>
 
-              <th
-                class="border-b-2 p-4 dark:border-dark-5 whitespace-nowrap text-gray-900 font-bold"
-                title="Field #4"
-              >
-                Number of books borrowed
-              </th>
-            </tr>
-          </thead>
-          <tbody class="borrowersList"></tbody>
-        </table>
-      </div>
-    </section>
+      <!-- <section class="mt-10 hidden" id="books">
+        <div class="container mx-auto space-y-4 flex flex-col items-center">
+          <div>
+            <h2
+              class="text-secondary font-bold tracking-wide text-2xl uppercase"
+            >
+              Books List
+            </h2>
+          </div>
 
+          <table class="table p-4">
+            <thead>
+              <tr>
+                <th
+                  class="border-b-2 p-4 dark:border-dark-5 whitespace-nowrap text-gray-900 font-bold"
+                  title="Field #1"
+                >
+                  #
+                </th>
+                <th
+                  class="border-b-2 p-4 dark:border-dark-5 whitespace-nowrap text-gray-900 font-bold w-96 text-left"
+                  title="Field #2"
+                >
+                  Book Title
+                </th>
+
+                <th
+                  class="border-b-2 p-4 dark:border-dark-5 whitespace-nowrap text-gray-900 font-bold"
+                  title="Field #4"
+                >
+                  Book Author
+                </th>
+                
+              </tr>
+            </thead>
+            <tbody id="booksList"></tbody>
+          </table>
+        </div>
+      </section> -->
+
+      <section class="mt-10 hidden" id="inquiries">
+        <div class="container mx-auto space-y-4 flex flex-col items-center">
+          <div>
+            <h2
+              class="text-secondary font-bold tracking-wide text-2xl uppercase"
+            >
+              Inquiries
+            </h2>
+          </div>
+
+          <table class="table p-4">
+            <thead>
+              <tr>
+                <th
+                  class="border-b-2 p-4 dark:border-dark-5 whitespace-nowrap text-gray-900 font-bold"
+                  title="Field #1"
+                >
+                  #
+                </th>
+                <th
+                  class="border-b-2 p-4 dark:border-dark-5 whitespace-nowrap text-gray-900 font-bold w-96 text-left"
+                  title="Field #2"
+                >
+                  Name
+                </th>
+
+                <th
+                  class="border-b-2 p-4 dark:border-dark-5 whitespace-nowrap text-gray-900 font-bold"
+                  title="Field #4"
+                >
+                  Email Address
+                </th>
+                <th
+                  class="border-b-2 p-4 dark:border-dark-5 whitespace-nowrap text-gray-900 font-bold"
+                  title="Field #5"
+                >
+                  Inquiry
+                </th>
+                <th
+                  class="border-b-2 p-4 dark:border-dark-5 whitespace-nowrap text-gray-900 font-bold"
+                  title="Field #6"
+                >
+                  Type
+                </th>
+              </tr>
+            </thead>
+            <tbody id="inquiryList"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
     <footer class="mt-20 bg-primary w-full">
       <div
         class="container mx-auto py-10 grid grid-cols-8 justify-between px-10 md:px-5 xl:px-0"
