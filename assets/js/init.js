@@ -19,6 +19,8 @@ function setDatabase(data) {
     localStorage.setItem("isLoggedIn", false);
   if (!localStorage.getItem("currentUser"))
     localStorage.setItem("currentUser", "");
+  if (!localStorage.getItem("inquiries"))
+    localStorage.setItem("inquiries", "[]");
 }
 
 async function initializeDatabase() {
