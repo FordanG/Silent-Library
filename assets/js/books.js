@@ -1,50 +1,12 @@
 const authBook = JSON.parse(localStorage.getItem("isLoggedIn"));
 const bookList = document.querySelector("#bookList");
-const data = JSON.parse(localStorage.getItem("books"));
-const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+const bookData = JSON.parse(localStorage.getItem("books"));
+if (localStorage.getItem("currentUser")) {
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+}
 const searchForm = document.forms.namedItem("searchForm");
 const searchResultTitle = document.querySelector("#searchResultTitle");
 const seeBooks = document.querySelector("#seeBooks");
-
-const search = (array, keyword) =>
-  data.filter((book) =>
-    book.title.toLowerCase().includes(keyword.toLowerCase())
-  );
-
-if (searchForm)
-  searchForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    searchBooks();
-  });
-
-seeBooks.addEventListener("click", () => {
-  searchResultTitle.innerHTML = `<h2 class="text-secondary font-bold tracking-wide text-2xl uppercase">
-            Pick a book
-          </h2>
-          <p class="text-gray-500 italic text-md">
-            Dive in the minds of these finest authors
-          </p>`;
-  seeBooks.classList.add("hidden");
-  generateBooks(data);
-});
-
-const searchBooks = () => {
-  let keyword = document.searchForm.searchField.value;
-  const searchResult = search(data, keyword);
-  if (!(searchResult.length === 0)) {
-    searchResultTitle.innerHTML = `<h2 class="text-secondary font-bold tracking-wide text-2xl uppercase">
-            ${searchResult.length} results for "${keyword}"
-          </h2>`;
-    bookList.innerHTML = "";
-    generateBooks(searchResult);
-  } else {
-    bookList.innerHTML = "";
-    searchResultTitle.innerHTML = `<h2 class="text-secondary font-bold tracking-wide text-2xl uppercase">
-            No Results Found for "${keyword}". Please try to search for a new book.
-          </h2>`;
-  }
-  seeBooks.classList.remove("hidden");
-};
 
 function generateBooks(data) {
   data.forEach((book) => {
@@ -76,7 +38,7 @@ function generateBooks(data) {
     book.addEventListener("click", (e) => {
       const bookISBN = e.path[1].id;
       // get book from list
-      const bookFound = data.find((book) => {
+      const bookFound = bookData.find((book) => {
         return book.isbn == bookISBN;
       });
       swal(bookFound);
@@ -84,7 +46,9 @@ function generateBooks(data) {
   });
 }
 
-if (authBook)
+generateBooks(bookData);
+
+if (authBook) {
   function swal(book) {
     Swal.fire({
       customClass: {
@@ -125,7 +89,7 @@ if (authBook)
       }
     });
   }
-else
+} else {
   function swal() {
     Swal.fire({
       title: `Login First to Borrow Books`,
@@ -137,5 +101,44 @@ else
       window.location = "./login.html";
     });
   }
+}
 
-generateBooks(data);
+const search = (array, keyword) =>
+  array.filter((book) =>
+    book.title.toLowerCase().includes(keyword.toLowerCase())
+  );
+
+if (searchForm)
+  searchForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    searchBooks();
+  });
+
+seeBooks.addEventListener("click", () => {
+  searchResultTitle.innerHTML = `<h2 class="text-secondary font-bold tracking-wide text-2xl uppercase">
+            Pick a book
+          </h2>
+          <p class="text-gray-500 italic text-md">
+            Dive in the minds of these finest authors
+          </p>`;
+  seeBooks.classList.add("hidden");
+  generateBooks(bookData);
+});
+
+const searchBooks = () => {
+  let keyword = document.searchForm.searchField.value;
+  const searchResult = search(bookData, keyword);
+  if (!(searchResult.length === 0)) {
+    searchResultTitle.innerHTML = `<h2 class="text-secondary font-bold tracking-wide text-2xl uppercase">
+            ${searchResult.length} results for "${keyword}"
+          </h2>`;
+    bookList.innerHTML = "";
+    generateBooks(searchResult);
+  } else {
+    bookList.innerHTML = "";
+    searchResultTitle.innerHTML = `<h2 class="text-secondary font-bold tracking-wide text-2xl uppercase">
+            No Results Found for "${keyword}". Please try to search for a new book.
+          </h2>`;
+  }
+  seeBooks.classList.remove("hidden");
+};

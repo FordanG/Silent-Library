@@ -2,7 +2,6 @@ const auth = JSON.parse(localStorage.getItem("isLoggedIn"));
 const navLinks = document.querySelector(".navLinks");
 const cta = document.querySelector("#cta");
 
-console.log(auth);
 if (auth) {
   cta.text = "Logout";
   cta.href = "#";
