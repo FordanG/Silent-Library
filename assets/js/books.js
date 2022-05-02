@@ -1,8 +1,9 @@
 const authBook = JSON.parse(localStorage.getItem("isLoggedIn"));
 const bookList = document.querySelector("#bookList");
 const bookData = JSON.parse(localStorage.getItem("books"));
+let currentUser;
 if (localStorage.getItem("currentUser")) {
-  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+  currentUser = JSON.parse(localStorage.getItem("currentUser"));
 }
 const searchForm = document.forms.namedItem("searchForm");
 const searchResultTitle = document.querySelector("#searchResultTitle");
