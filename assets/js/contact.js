@@ -1,3 +1,4 @@
+import * as auth from "./auth.js";
 let users = JSON.parse(localStorage.getItem("users"));
 
 // nodes selection
@@ -5,23 +6,16 @@ const contactForm = document.forms.namedItem("contact");
 let inquiries = JSON.parse(localStorage.getItem("inquiries"));
 console.log(contactForm);
 
-const submitForm = () => {
-  // Get the HTML elements
-  let firstName = contactForm.firstName;
-  let lastName = contactForm.lastName;
-  let email = contactForm.email;
-  let inquiryType = contactForm.inquiry;
-  let message = contactForm.message;
-
-  if (isValidFirstName(firstName, 1, 20))
-    if (isValidLastName(lastName, 1, 20))
-      if (isValidEmail(email)) {
+const submitForm = (data) => {
+  if (isValidFirstName(data.firstName, 1, 20))
+    if (isValidLastName(data.lastName, 1, 20))
+      if (isValidEmail(data.email)) {
         let inquiry = {
-          first_name: firstName.value,
-          last_name: lastName.value,
-          email: email.value,
-          inquiryType: inquiryType.value,
-          message: message.value,
+          first_name: data.firstName,
+          last_name: data.lastName,
+          email: data.email,
+          inquiryType: data.inquiry,
+          message: data.message,
         };
 
         inquiries.push(inquiry);
@@ -35,14 +29,11 @@ const submitForm = () => {
         }).then(function () {
           contactForm.reset();
         });
-        return true;
       }
-
-  return false;
 };
 
 const isValidFirstName = (firstName, minLen, maxLen) => {
-  let firstNameLength = firstName.value.length;
+  let firstNameLength = firstName.length;
   if (
     firstNameLength == 0 ||
     firstNameLength > maxLen ||
@@ -67,7 +58,7 @@ const isValidFirstName = (firstName, minLen, maxLen) => {
 };
 
 const isValidLastName = (lastName, minLen, maxLen) => {
-  let lastNameLength = lastName.value.length;
+  let lastNameLength = lastName.length;
   if (
     lastNameLength == 0 ||
     lastNameLength > maxLen ||
@@ -93,7 +84,7 @@ const isValidLastName = (lastName, minLen, maxLen) => {
 
 const isValidEmail = (email) => {
   let mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-  if (email.value.match(mailformat)) {
+  if (email.match(mailformat)) {
     return true;
   } else {
     alert("Enter valid email address!");
@@ -104,7 +95,7 @@ const isValidEmail = (email) => {
 
 const isAlpha = (input) => {
   let characters = /^([A-Z][a-z]+([ ]?[a-z]?['-]?[A-Z][a-z]+)*)$/; // Regular Expression [ ] - Options , A-Z - A,B, C ... Z, ^ - Any
-  if (input.value.match(characters)) {
+  if (input.match(characters)) {
     return true;
   }
   return false;
@@ -112,7 +103,7 @@ const isAlpha = (input) => {
 
 const isAlphaNumeric = (input) => {
   let characters = /^[0-9A-Za-z]+$/;
-  if (input.value.match(characters)) {
+  if (input.match(characters)) {
     return true;
   }
   return false;
@@ -121,7 +112,7 @@ const isAlphaNumeric = (input) => {
 const isPassword = (input) => {
   // - must contain at least 1 uppercase letter, 1 lowercase letter, and 1 number
   let characters = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{6,}$/gm;
-  if (input.value.match(characters)) {
+  if (input.match(characters)) {
     return true;
   }
   return false;
@@ -148,5 +139,12 @@ const checkUser = (email) => {
 if (contactForm)
   contactForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    submitForm();
+    //   console.log(e.target.elements);
+    const data = {};
+    const elements = e.target.elements;
+    //   e.target.elements.forEach((element) => console.log(element.element));
+    for (i = 0; i < elements.length; i++) {
+      data[elements[i].name] = elements[i].value;
+    }
+    submitForm(data);
   });

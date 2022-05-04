@@ -1,3 +1,4 @@
+import * as auth from "./auth.js";
 if (!localStorage.getItem("currentUser")) {
   (() => {
     Swal.fire({

@@ -13,7 +13,7 @@
       href="./assets/img/favicon.png?"
     />
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="./assets/js/init.js"></script>
+    <script src="./assets/js/index.js" type="module"></script>
   </head>
   <body class="">
     <nav class="bg-primary p-5 flex justify-center sticky top-0 z-50">
@@ -77,18 +77,20 @@
           <p class="mt-4 text-2xl text-gray-600">
             Millions of books available through <br />controlled digital lending
           </p>
-          <div class="mt-10 flex">
+          <form name="searchForm" class="mt-10 flex">
             <input
               class="drop-shadow-lg rounded-sm px-10 py-4 w-96 outline-0"
               type="text"
-              placeholder="Books, Categories, Author..."
+              name="searchField"
+              placeholder="Books..."
             />
             <button
+              type="submit"
               class="drop-shadow-md bg-primary py-4 px-16 rounded-sm text-white font-bold text-xl uppercase"
             >
               Search
             </button>
-          </div>
+          </form>
         </div>
         <div>
           <img
@@ -111,10 +113,10 @@
             Check out these trending books
           </p>
         </div>
-        <div class="grid grid-cols-6 justify-between mt-10">
+        <div class="grid grid-cols-6 justify-between mt-10" id="bookList">
           <!-- Books -->
 
-          <a
+          <!-- <a
             href="./bookpage.html"
             class="flex flex-col items-center justify-center transform hover:scale-102 transition duration-200 ease-in-out hover:brightness-110"
           >
@@ -185,7 +187,7 @@
             />
             <h3 class="font-bold text-lg">Book Title</h3>
             <h4 class="text-lg -mt-2">Author Name</h4>
-          </a>
+          </a> -->
         </div>
 
         <!-- Button  -->
@@ -211,7 +213,6 @@
           </p>
         </div>
         <div class="grid grid-cols-4 justify-between mt-10 gap-y-10">
-          <!-- Books -->
           <a
             href="./events.html"
             class="flex flex-col items-center justify-center transform hover:scale-102 transition duration-200 ease-in-out hover:brightness-110"
@@ -366,6 +367,5 @@
         </p>
       </div>
     </footer>
-    <script src="./assets/js/auth.js"></script>
   </body>
 </html>

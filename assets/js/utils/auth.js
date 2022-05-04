@@ -1,4 +1,6 @@
-const auth = JSON.parse(localStorage.getItem("isLoggedIn"));
+import * as init from "./init.js";
+
+export const auth = JSON.parse(localStorage.getItem("isLoggedIn"));
 const navLinks = document.querySelector(".navLinks");
 const cta = document.querySelector("#cta");
 
