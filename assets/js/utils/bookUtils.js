@@ -61,7 +61,8 @@ function showModal(book) {
     imageUrl: `${book.thumbnailUrl}`,
     imageHeight: 240,
     imageAlt: `${book.title}`,
-    html: `<b>${book.title}</b> by <em>${book.authors[0]}</em>`,
+    html: `<b>${book.title}</b> by <em>${book.authors[0]}</em> <br><br>
+    <p class="text-left">${book.shortDescription ?? ""}</p>`,
     showCancelButton: true,
     confirmButtonColor: "#4188E4",
     cancelButtonColor: "#F9537F",
