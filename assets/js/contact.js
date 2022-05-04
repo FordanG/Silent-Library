@@ -4,7 +4,6 @@ let users = JSON.parse(localStorage.getItem("users"));
 // nodes selection
 const contactForm = document.forms.namedItem("contact");
 let inquiries = JSON.parse(localStorage.getItem("inquiries"));
-console.log(contactForm);
 
 const submitForm = (data) => {
   if (isValidFirstName(data.firstName, 1, 20))

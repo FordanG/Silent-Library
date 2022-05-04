@@ -32,7 +32,7 @@ export function generateBooks(data) {
     book.addEventListener("click", (e) => {
       const bookISBN = e.path[1].id;
       // get book from list
-      console.log(database.books);
+
       const bookFound = database.books.find((book) => {
         return book.isbn == bookISBN;
       });
