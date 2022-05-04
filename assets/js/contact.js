@@ -1,4 +1,4 @@
-import * as auth from "./auth.js";
+import * as auth from "./utils/auth.js";
 let users = JSON.parse(localStorage.getItem("users"));
 
 // nodes selection
@@ -134,16 +134,12 @@ const checkUser = (email) => {
   return userFound ? userFound : false;
 };
 
-// document.querySelector("#submit").addEventListener("click", formValidation());
-
 if (contactForm)
   contactForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    //   console.log(e.target.elements);
     const data = {};
     const elements = e.target.elements;
-    //   e.target.elements.forEach((element) => console.log(element.element));
-    for (i = 0; i < elements.length; i++) {
+    for (let i = 0; i < elements.length; i++) {
       data[elements[i].name] = elements[i].value;
     }
     submitForm(data);

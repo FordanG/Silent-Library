@@ -1,6 +1,6 @@
-import * as auth from "./auth.js";
-import { database } from "./database.js";
-import { generateBooks } from "./bookUtils.js";
+import * as auth from "./utils/auth.js";
+import { database } from "./utils/database.js";
+import { generateBooks } from "./utils/bookUtils.js";
 
 const featuredBooks = database.books.slice(0, 6);
 const searchForm = document.forms.namedItem("searchForm");

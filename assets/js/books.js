@@ -1,6 +1,6 @@
-import * as auth from "./auth.js";
-import { database } from "./database.js";
-import { generateBooks } from "./bookUtils.js";
+import * as auth from "./utils/auth.js";
+import { database } from "./utils/database.js";
+import { generateBooks } from "./utils/bookUtils.js";
 
 let keyword = localStorage.getItem("keyword");
 
