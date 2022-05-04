@@ -101,39 +101,6 @@ const isAlpha = (input) => {
   return false;
 };
 
-const isAlphaNumeric = (input) => {
-  let characters = /^[0-9A-Za-z]+$/;
-  if (input.match(characters)) {
-    return true;
-  }
-  return false;
-};
-
-const isPassword = (input) => {
-  // - must contain at least 1 uppercase letter, 1 lowercase letter, and 1 number
-  let characters = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{6,}$/gm;
-  if (input.match(characters)) {
-    return true;
-  }
-  return false;
-};
-
-const checkUser = (email) => {
-  const userFound = users.find((user) => {
-    return user.email == email.value;
-  });
-
-  if (userFound && registrationForm) {
-    Swal.fire({
-      title: "User Found",
-      text: "This email has been associated with an account already",
-      icon: "error",
-      confirmButtonText: "Continue",
-    });
-  }
-  return userFound ? userFound : false;
-};
-
 if (contactForm)
   contactForm.addEventListener("submit", (e) => {
     e.preventDefault();

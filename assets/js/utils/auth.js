@@ -23,7 +23,7 @@ if (auth) {
   navLinks.insertBefore(admin, navLinks.children[4]);
 }
 
-function logout() {
+export function logout() {
   localStorage.removeItem("isLoggedIn");
   localStorage.removeItem("currentUser");
   window.location = "./index.html";

@@ -1,13 +1,6 @@
-let users = JSON.parse(localStorage.getItem("users"));
-
-// console.log(users);
-
-// $(function () {
-//   users = JSON.parse(users); // Convert String as an Object
-//   if (users === null)
-//     // If there is nothing intialize
-//     localStorage.setItem("users", JSON.stringify(users));
-// });
+import * as auth from "./utils/auth.js";
+import { database } from "./utils/database.js";
+let users = database.users;
 
 // nodes selection
 const registrationForm = document.forms.namedItem("registration");
